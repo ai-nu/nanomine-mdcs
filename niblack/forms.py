@@ -6,4 +6,4 @@ class DocumentForm(forms.Form):
     )
     
 class NiblackAdjustForm(forms.Form):
-    adjust = forms.CharField(label='Enter Pixel Size to Adjust:', max_length=100)    
+    adjust = forms.IntegerField(label='Enter Window Size (in pixels):', required=False,initial=5,min_value=1)    

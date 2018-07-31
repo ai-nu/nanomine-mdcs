@@ -41,7 +41,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'resources/css/icons.css' %}" media="screen" />
     <link rel="stylesheet" type="text/css"
           href="{% static 'resources/lib/jquery-ui/themes/smoothness/jquery-ui.css' %}"/>
-
+    <!-- loader overlay -->
+    <link rel="stylesheet" href="{% static 'css/nmrr/loaderstyle.css' %}">
     {% block theme %}{% endblock %}
     {% block extrastyle %}{% endblock %}
 
@@ -55,6 +56,8 @@
     <!--nmrr added end-->
 </head>
 <body>
+    <div id="overlay"></div>
+    <div id="loader"></div>
     {% block body %}{% endblock %}
 
     <!-- JQuery & JQuery UI -->
@@ -71,6 +74,12 @@
 
     <script type="text/javascript">
         window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";
+    </script>
+    <script>
+        function showLoading() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+        }
     </script>
 
     {% block extrajs %}{% endblock %}

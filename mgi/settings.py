@@ -44,7 +44,7 @@ if DEBUG == True:
     }
     
 else:
-    pass
+    pass 
     # Uncomment and set all parameters, delete pass instruction
     # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
     
@@ -96,7 +96,7 @@ HANDLE_SERVER_PSWD = ''
 # Customization: MGI
 CUSTOM_TITLE = 'NanoMine'
 CUSTOM_SUBTITLE = 'Material Informatics for Polymer Nanocomposites'
-CUSTOM_DATA = 'Materials Data'
+CUSTOM_DATA = 'Nanocomposites Data'
 CUSTOM_CURATE = 'Curate Data'
 CUSTOM_EXPLORE = 'Search Data'
 CUSTOM_COMPOSE = 'Composer'
@@ -154,6 +154,10 @@ INSTALLED_APPS = (
     'XMLCONV',
     # HZ
     'signups',
+    # AI
+    'Two_pt_MCR',
+    'Otsu',
+    'SDF',
 )
 
 OAUTH2_PROVIDER = {

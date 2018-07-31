@@ -1736,8 +1736,8 @@ def renderValueInput():
 def renderStringSelect():
     return """
     <select>
-      <option value="is">is</option>
       <option value="like">like</option>                      
+      <option value="is">is</option>
     </select> 
     """
 

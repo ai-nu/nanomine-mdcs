@@ -1,3 +1,6 @@
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+{% comment %}
 <!-- 
 ################################################################################
 #
@@ -10,45 +13,86 @@
 #
 ################################################################################
 -->
+{% endcomment %}
 
-{% extends 'base_featured.html' %}
-{% load staticfiles %}
-
-
-{% block title %}<h1><span>Excel Uploader</span></h1>{% endblock %}
-{% block menu %}{% include 'menu.html' with active_tab='tab8' %}{% endblock %}
+{% block title %}<h1><span>Data Uploader</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='options' %}{% endblock %}
 {% block content%}
 
-
+<div style="background-color:rgba(255, 99, 71, 0.3);color:red;">
+{% if messages %}
 <br>
+<ul class="messages">
+    {% for message in messages %}
+    <li> {{message}} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+<div style="background-color:rgba(153, 255, 102, 0.3);color:rgba(32, 102, 0, 1);">
+{% if success %}
+<br>
+<ul class="upload_successful">
+    <li> {{success}} </li>
+</ul>
+{% endif %}
+</div>
+
 <h3>Description</h3>
 <br>
-<p>Instead of using the online data curation form where you enter individual fields and values, you can consolidate all your data for a given sample into a single Excel spreadsheet and upload using just one-click. </p>
+<p>The simplest method to curate your sample into the database is by uploading an MS Excel spreadsheet. An online web-form is also available for the advanced user (<a href = "/curate">click here</a>). For each sample, upload a template Excel file using the first uploading box and other supplementary image and raw data files using the second uploading box. The master Excel template contains all possible fields for nanocomposite sample data and therefore many fields will remain blank for your sample. Fill in only the parameters applicable to your sample. Customized templates are available upon request, please contact <a href="mailto:nanominenu@gmail.com">the administrator</a>.</p>
 <br>
 
-<p>Step 1: Click <a href="http://nanomine.northwestern.edu/nanomine/XMLCONV/template.xlsx" download>here</a> to download excel template.
- (Click <a href="http://nanomine.northwestern.edu/nanomine/XMLCONV/example.xlsx" download>here</a> to see a example of how to fill up each section)</p>
-<p>Step 2: Change the file name and fill all the section properly.</p>
-<p>Step 3: Upload excel file and all the image files, then click run to save your data into database.</p>
+<h5>Steps</h5>
+<p>Step 1: Click <a href="{% static 'XMLCONV/master_template.zip' %}" download>here</a> to download the blank MS Excel template (137 kB).
+ (Click <a href="{% static 'XMLCONV/example.zip' %}" download>here</a> to see an example, 263 kB)<br>
+Step 2: Fill in the parameters for all applicable cells in the template Excel file. Prepare the supplementary images and raw data files.<br>
+Step 3: Select the template Excel file in the first uploading box.<br>
+Step 4: Select the supplementary images and other raw data files in the second uploading box (press "Ctrl" or "Command" when selecting multiple files), then click Submit to upload your data.<br>
+Step 5: Wait for the feedback message. Please read the message and follow the instructions if an error message is displayed.</p>
 
-<form method='POST' enctype='multipart/form-data'> {% csrf_token %}
+
+<h5>Note</h5>
+<p>1. We recommend you to upload your control sample first and remember its sample ID.<br>
+2. Upload one sample data at a time (one template Excel file along with supplementary files).<br>
+3. Rows or sections followed by a "#" sign in the template Excel file can be duplicated. Copy them into additional rows if needed.<br>
+4. Acceptable image file format: JPG, PNG, TIF(F). Indicate the full image file name including the extensions in the corresponding cells in the template Excel file.
+</p>
 
 <h3>Inputs</h3><br>
 
-<p>Upload files:</b>
-	<p>{{ form.non_field_errors }}</p>
-	<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-	<p>
-		{{ form.docfile.errors }}
-		{{ form.docfile }}
-	</p>
-<p>Enter excel file name (WITH extension) you upload. </p>
+<form method='POST' enctype='multipart/form-data'> {% csrf_token %}
+
+<p>Upload the Excel template file here:</b>
+    <p>{{ form.non_field_errors }}</p>
+    <p>{{ form.templatefile.label_tag }} {{ form.templatefile.help_text }}</p>
+    <p>
+        {{ form.templatefile.errors }}
+        {{ form.templatefile }}
+    </p>
+
+<p>Upload all other files here (including Excel raw data files and all related image or binary files):</b>
+    <!-- <p>{{ form.non_field_errors }}</p> -->
+    <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+    <p>
+        {{ form.docfile.errors }}
+        {{ form.docfile }}
+    </p>
+<!--<p>Enter MS Excel file name (with extension, e.g., .xls or .xlsx) </p>
 <input type='text' name='excel_file' value='example.xlsx' required><br>
-<p>Enter image file name (WITH extension) you upload, separated by semicolon. Leave it blank if no image file upload.</p>
-<input type='text' name='img_file' value=''><br>
-<p><input type='submit' value='Submit' onclick="msg3()"></p>
+<p>Enter image file name(s) (with extension, e.g., .jpg or .png), separated by semicolon. Leave blank if no image file is uploaded.</p>
+<input type='text' name='img_file' value=''><br>-->
+<input type='submit' value='Submit' onclick="XMLCONVshowLoading()">
 </form>
 
+<script>
+    function XMLCONVshowLoading() {
+        if (document.getElementById('id_templatefile').value) {
+            showLoading();
+        }
+    }
+</script>
 <!--
 <form>
 <b>After upload files, please click "Submit" to save your data into database.</b>
@@ -57,10 +101,11 @@
 </form>
 -->
 
-<script>
+<!-- <script>
     function msg3() {
-        alert("Your data has been saved into database and you can use searching function to view your data.");
+        //alert("Thank you for using the data uploading tool. Your data has been uploaded and is being reviewed by the administrators. Once approved, your data will be available for searching. You may be contacted if we have questions about the data you uploaded.");
+        alert("Thank you for uploading data. Please do not close this page until the buffering in your browser is finished in order to upload attached files. Error messages may pop up.");
         return true;
     }
-</script>	
+</script>    -->
 {% endblock %}

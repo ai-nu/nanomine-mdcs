@@ -15,18 +15,18 @@
 {% load staticfiles %}
 
 
-{% block title %}<h1><span>Dielectric Permittivity 2D FEA</span></h1>{% endblock %}
+{% block title %}<h1><span>Dielectric Permittivity 2D FEA (currently not available) </span></h1>{% endblock %}
 {% block menu %}{% include 'menu.html' with active_tab='simulate_tool' %}{% endblock %}
 
 {% block content%}
 
 <h3>Finite Element Simulation of Dielectric Permittivity Spectroscopy with Explicit Microstructure Dispersion and Interphase Model
 </h3><br>
-<p>This simulation incorporates interphase model that are direclty correlated with experimental data.
-The microstructure used in the simulation can be obtained with either existing micrographs stored in the database, or
-reconstructed from free energy calculation.</p><br>
+<p>This simulation incorporates an interphase model that is directly correlated with experimental data.
+The microstructure used in the simulation can be obtained with either existing micrographs stored in the database or
+reconstructed from free energy calculation.</p>
+<p><a href="/FEA2D/DielectricFEA2DResultSample">Sample Result</a></p>
 
-	
 <form method='POST'>  {% csrf_token %}
 
 <h4>Choose from list of polymers, particle, and surface treatment. </h4>
@@ -85,17 +85,17 @@ reconstructed from free energy calculation.</p><br>
 <tr>
 	<td> Short Brush Dieletric Constant<br><input type='text' name='eps_shortbrush' value='2.5' required>
 </td>
-	<td> Short Brush Refrative Index<br><input type='text' name='n_shortbrush' value='1.5917'>
+	<td> Short Brush Refractive Index<br><input type='text' name='n_shortbrush' value='1.5917'>
 </td>
-	<td> Volumn Fraction <br><input type='text' name='v_shortbrush' value='1'>
+	<td> Volume Fraction <br><input type='text' name='v_shortbrush' value='1'>
 </td>
 </tr>
 <tr> 
 	<td> Functional Group Dielectric Constant<br><input type='text' name='eps_funcG' value='1'>
 </td>
-	<td> Functional Group Refrative Index<br><input type='text' name='n_funcG' value='0'>
+	<td> Functional Group Refractive Index<br><input type='text' name='n_funcG' value='0'>
 </td>
-	<td> Volumn Fraction <br><input type='text' name='v_funcG' value='0'>
+	<td> Volume Fraction <br><input type='text' name='v_funcG' value='0'>
 </td>
 </tr>	
 <tr>
@@ -153,9 +153,8 @@ reconstructed from free energy calculation.</p><br>
 </form>
 
 <br>
-<p><a href="/FEA2D/DielectricFEA2DResultSample">Sample Result</a></p>
 
-<h5> This project is in collaboration with Rensselaer Polytechnic Institute and supported by Office of Naval Research (ONR).</h5><br>
+<h5> This project is in collaboration with Rensselaer Polytechnic Institute and financially supported by Office of Naval Research (ONR).</h5><br>
 
 <div class="row">
  <div class="col-md-6">

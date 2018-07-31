@@ -28,20 +28,20 @@
 {% endblock %}
 
 {% block title %}
-<h2>Find {{CUSTOM_DATA}}</h2>
+<h2 style="text-align:center;">A {{CUSTOM_DATA}} Resource</h2>
 {% endblock %}
 
 {% block content %}
-<article>
-	<p>
-        This system allows for the registration of materials resources, bridging the gap between existing resources and
-        the end users. The {{CUSTOM_TITLE}} functions as a centrally located service, making the
-        registered information available for research to the materials community.
-    </p>
-	<p>
-        This is being developed at the National Institute of Standards and Technology and is made available to solicit
-        comments from the Material Science community. Please do not enter any proprietary data into this system.
-    </p>
-</article>
+<p><span>NanoMine is an open source, data resource for members of the nanocomposites community. It has four key goals:</span></p>
+<li style="list-style-type: -"><span>To provide a platform for sharing of data across the community in a format that makes the data findable, accessible, interoperable and reusable (FAIR <a href="http://www.force11.org" target="_blank">www.force11.org</a>).</span></li>
+<li style="list-style-type: -"><span>To provide a platform for visualizing data, and a mechanism for methods for visualization to be shared.</span></li>
+<li style="list-style-type: -"><span>To provide tools that improve the quantification of nanofiller dispersion and morphology as well as the ability to reconstruct those morphologies for subsequent modeling and analysis.</span></li>
+<li style="list-style-type: -"><span>To improve the ability to design nanocomposites through simulation and design tools.</span></li>
+<p><span>NanoMine is built on both a <a href="https://github.com/Duke-MatSci/nanomine-schema/tree/master/xml" target="_blank">schema</a> and an ontology to provide a robustness to the FAIR principles. Nanomine also allows for the registration of materials resources, bridging the gap between existing resources and the end users and making those existing resources available for research to material community.</span></p>
+
+<p style="text-align:center;"><img src="{% static 'img/sponsors3.png' %}" alt="" height="250" width="600" align = "middle"/></p>
+
+<p><font size="3">NSF supported the initial concept of NanoMine as a joint NU/RPI project through the CDMR program and is currently supporting a robust ontology and software framework via the DIBBS program. The DMREF program currently supports the development and publication of innovative material simulation and design tools. The DIBBS program currently supports infrastructure and software development and integration. NIST/CHIMAD support data curation, demonstration materials design problems, and integration into the larger MGI network as well as provide backbone use of the Materials Data Curator system run by NIST.</font></p>
+
 {% endblock %}
 

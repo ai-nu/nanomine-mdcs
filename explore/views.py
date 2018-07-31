@@ -43,7 +43,7 @@ from admin_mdcs.models import permission_required
 #                (index.html)
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def index(request):
     currentTemplateVersions = []
     for tpl_version in TemplateVersion.objects():
@@ -73,7 +73,7 @@ def index(request):
 #                (index.html)
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def index_keyword(request):
     template = loader.get_template('explore/explore_keyword.html')
     search_form = KeywordForm(request.user.id)
@@ -91,7 +91,7 @@ def index_keyword(request):
 # Description:   Page that allows to select a template to start Exploring
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_select_template(request):
     template = loader.get_template('explore/explore.html')
     context = RequestContext(request, {
@@ -108,7 +108,7 @@ def explore_select_template(request):
 # Description:   Page that allows to select fields being used during Exploration
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_customize_template(request):
     template = loader.get_template('explore/explore_customize_template.html')
     context = RequestContext(request, {
@@ -127,7 +127,7 @@ def explore_customize_template(request):
 # Description:   Page that allows to submit queries
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_perform_search(request):
     try:
         template = loader.get_template('explore/explore_perform_search.html')
@@ -167,7 +167,7 @@ def explore_perform_search(request):
 # Description:   Page that allows to see results from a query
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_results(request):
     template = loader.get_template('explore/explore_results.html')
     context = RequestContext(request, {
@@ -187,7 +187,7 @@ def explore_results(request):
 # Description:   Page that allows to see all results from a template
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_all_results(request):
     template_id = request.GET['id']
 
@@ -219,7 +219,7 @@ def explore_all_results(request):
 # Description:   Page that allows to see all results from all versions of a template
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_all_versions_results(request):
     template_id = request.GET['id']
     template = Template.objects().get(pk=template_id)
@@ -262,7 +262,7 @@ def explore_all_versions_results(request):
 # Description:   Page that allows to see all selected detail result from a template
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_detail_result(request) :
     template = loader.get_template('explore/explore_detail_results.html')
     context = explore_detail_result_process(request)
@@ -282,7 +282,7 @@ def explore_detail_result(request) :
 # Description:   Page that allows to see detail result from a selected result
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_detail_result_keyword(request) :
     template = loader.get_template('explore/explore_detail_results_keyword.html')
     context =  explore_detail_result_process(request)
@@ -298,7 +298,7 @@ def explore_detail_result_keyword(request) :
 # Description:   Page that allows to see detail result from a selected result
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def explore_detail_result_process(request) :
     result_id = request.GET['id']
     xmlString = XMLdata.get(result_id)
@@ -344,7 +344,7 @@ def explore_detail_result_process(request) :
 # Description:   Page that allows to see all selected detail results from a template
 #
 ################################################################################
-@permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
+# @permission_required(content_type=RIGHTS.explore_content_type, permission=RIGHTS.explore_access, login_url='/login')
 def start_export(request):
     if request.method == 'POST':
         #We retrieve all selected exporters

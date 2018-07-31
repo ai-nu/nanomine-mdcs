@@ -1,4 +1,4 @@
-function img1 = noise_filter(img, resl);
+function img1 = noise_filter(img)%, resl);
 %========================================%
 % the function is designed to find the clusters whose size is less than the
 % minimum particle size 
@@ -22,32 +22,32 @@ function img1 = noise_filter(img, resl);
 %300L, 50nm = 183 pixels
 %========================================%
 % find the corresponding equivalent radius
-switch resl
-%     case 1
-%         r = 1;
-    case 60
-       r = 5.475;
-    case 80
-       r = 7.3125;
-    case 100
-       r = 9.15;
-    case 150
-       r = 13.725;
-    case 300
-       r = 54.9;
-    case 2000
-       r = 7.5/400*240;
-    case 1001 % monoPGMA
-       r = 7.5/200*432;
-    case 1002 % ferroPGMA
-       r = 7.5/500*703;
-    case 1003 % terthio
-       r = 7.5/500*523;
-end
+% switch resl
+% %     case 1
+% %         r = 1;
+%     case 60
+%        r = 5.475;
+%     case 80
+%        r = 7.3125;
+%     case 100
+%        r = 9.15;
+%     case 150
+%        r = 13.725;
+%     case 300
+%        r = 54.9;
+%     case 2000
+%        r = 7.5/400*240;
+%     case 1001 % monoPGMA
+%        r = 7.5/200*432;
+%     case 1002 % ferroPGMA
+%        r = 7.5/500*703;
+%     case 1003 % terthio
+%        r = 7.5/500*523;
+% end
 %label the clusters
 img_b = bwlabel(img);
 nh = max(max(img_b));
-
+r=1;
 %examine the cluster with the criteria
 for ii = 1 : 1 : nh
     img_S = double (img_b == ii);

@@ -27,12 +27,17 @@
 
 {% block title %}<h1>Data Entry</h1>{% endblock %}
 {% block description %}
-    Here you can fill in the {{CUSTOM_DATA}} form. Once it is completed, you can go to 'View Data' to review what you have entered.
+<!--     Here you can fill in the {{CUSTOM_DATA}} form. Once it is completed, you can go to 'View Data' to review what you have entered.
     You won't be able to reach the review page before the document is valid according to the selected template. From the review page, you will be able to curate the data.
     The 'Save Form' button allows you to save partial data that you may want to edit later. This will only save a temporary document and won't actually curate data.
     All grayed elements are optional. Thus, all elements written in black are required. The document may still be valid with empty elements.
     There are no validation on empty fields if no such constraint is defined in the template.
-    Thus, an empty string of characters may not raise a validation error, but an empty number will.    
+    Thus, an empty string of characters may not raise a validation error, but an empty number will.     -->
+    Here you can fill in the {{CUSTOM_DATA}} form. Once it is completed, you can go to 'View Data' to review what you have entered.
+    You will not be able to reach the review page before the document is valid according to the selected template. From the review page, you will be able to curate the data into the NanoMine system.
+    The 'Save Form' button allows you to save partial data that you may want to edit later. This function saves a temporary document for later editing and does not enter the partial data into NanoMine.
+    All grayed elements are optional. All elements written in black are required. The document may still be valid with empty fields.
+    There is no validation on empty fields if no such constraint is defined in the template. Thus, an empty string of characters may not raise a validation error, but an empty number will.
 {% endblock %}
 
 {% block menu %}{% include 'menu.html' with active_tab='options' %}{% endblock %}

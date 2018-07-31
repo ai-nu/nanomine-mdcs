@@ -1,3 +1,6 @@
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+{% comment %}
 <!-- 
 ################################################################################
 #
@@ -10,9 +13,9 @@
 #
 ################################################################################
 -->
+{% endcomment %}
 
-{% extends 'base_featured.html' %}
-{% load staticfiles %}
+
 
 
 {% block title %}<h1><span>Dynamfit - Prony Series coefficient fitting</span></h1>{% endblock %}
@@ -22,17 +25,21 @@
 <br>
 <h3>Description</h3>
 <br>
-<p>This program fits viscoelastic mastercurve from DMA experiments by Prony Series so that the Prony Series coefficients can be used as viscoelastic properties for FEA simulation. </p>
+<p>
+This program fits a viscoelastic mastercurve from DMA experiments with a Prony Series. The Prony Series coefficients can be used as baseline properties for the matrix in a FEA simulation of nanocomposites.<!-- This program fits viscoelastic mastercurve from DMA experiments by Prony Series so that the Prony Series coefficients can be used as viscoelastic properties for FEA simulation.  --></p>
 <br>
+<h4>If this tool is new to you, please click <input type='button' value='example of dynamfit' onClick="window.open('/DynamfitExample','newwindow')"> to get familiar with this tool.</h4><br>
 <h3> Instructions </h3><br>
 <p> <b>Function Name:</b> Dynamfit</p>
-<p><b>Description:</b> Fit mastercurve (tan &#948 vs. frequency) by Prony Series</p><br>
+<p><b>Description:</b> This program is used to fit the mastercurve from DMA experiments by Prony Series so that the Prony Series coefficients can be used as input material properties in FEA model.</p>
+</p><br>
 
 <form method='POST' enctype='multipart/form-data' action="{% url "dynamfit" %}"> {% csrf_token %}
 
 <h3>Inputs</h3><br>
 
-<p><b>1. Upload #.X_T file containing three values per line (Frequency X' X'') and the filename must be upper case:</b></p>
+<p><b>1. Upload #.X_T file (frequecy depedent property; 1st Column: Frequency; 2nd Column: Storage Modulus E'; 3rd Column: Loss Modulus E")
+ and the filename must be upper case:</b></p>
 <!--
 <input type='file' name='files' id='files'><br>
 -->
@@ -65,9 +72,8 @@
 <p><input type='submit' value='Run'> Please wait about 1 minute to run the simulation</p>
 </form>
 <form>
-<b>After simulation is finished, you can download you result</b>
+<b>After the simulation is finished, you can download your result</b>
 <input type='button' value='Download result' onClick="window.open('/DynamfitRun','newwindow')"><br><br>
-<h4>For very beginner, please click <input type='button' value='example of dynamfit' onClick="window.open('/DynamfitExample','newwindow')"> to get familiar with this tool.</h4><br>
 <h3>For advanced use, please click <a href="http://nanomine.northwestern.edu/nanomine/Dynamfit/dynamfit.exe" download>here</a> to download the program.</h3>
 </form>
 

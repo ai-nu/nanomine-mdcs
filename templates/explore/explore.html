@@ -32,24 +32,13 @@ extends "mdcs/extra/two_columns.html"
 {% block title %}<h1>Select Template</h1>{% endblock %}
 
 {% block description %}
-Select a template from the following table. Once you make your selection, click on "Select Fields" to proceed.  It will
-automatically load the appropriate form and display it on the next page.
+<p>The searching function below is tedious to use and is mainly used by experienced curator users. For a simpler, more intuitive searching approach please use the query tool in<a href="https://nanomine.oit.duke.edu:8443/viz" target="_blank"> our visualization page</a>.</p>
+
+<p>If you still want to try the searching function below, please select a template from the following table. Once you make your selection, click on "Select Fields" to proceed. It will automatically load the appropriate form and display it on the next page.</p>
+
 {% endblock %}
 
 {% block menu %}{% include 'menu.html' with active_tab='options' %}{% endblock %}
-
-{% block submenu %}	
-<ul id="subnav-tab-1" class="tabbed">
-    <li class="current_page_item">
-    	<a href="/explore">Query by Example</a>
-   	</li>
-    <li>
-        <div style="cursor:pointer">
-            <a href="/explore/keyword">Search by Keyword</a>
-        </div>
-    </li>
-</ul>
-{% endblock %}
 
 {% block content %}
 <div id="template_selection">

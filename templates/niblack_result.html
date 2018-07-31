@@ -1,41 +1,89 @@
 <!-- 
 ################################################################################
 #
-# File Name: niblack.html
+# File Name: niblack_result.html
 # Application: templates
 # Description: 
 #
-# Modified by: He Zhao, Aug 17, 2015
+# Created by: He Zhao, Aug 17, 2015 
+# Modified by: Akshay Iyer
 # Customized for NanoMine
 #
 ################################################################################
 -->
 
-{% extends 'nmrr/extra/small_intro.html' %}
+{% extends 'base_featured.html' %}
 {% load staticfiles %}
 
 
-{% block title %}<h1><span>Dynamic Binarization</span></h1>{% endblock %}
-{% block menu %}{% include 'nmrr/menus/main.html' with active_tab='tab8' %}{% endblock %}
+{% block title %}<h1><span>Niblack Binarization</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
 {% block content%}
 
-<h4>Dynamic Binarization</h4>
+<p>Current window size, area fraction of white phase (i.e. percentage of white pixels in binarized image) and the corresponding binarized image are shown below. 
+	You can change the window size and repeat binarization until you get satisfactory results.</p>
 
-<!--display file name from .mat-->
+<p>You can download the binarized image (in .jpg format) shown on screen using the provided link.</p>
+	<!--display file name from .mat-->
 <p>Image file:  {{ fname }}</p>
-<p>Current binarization window size: {{win_size}} pixels</p>
-<p>Raw image size: {{img_pix_size}} pixels</p>
+<p><strong>Current binarization window size: {{win_size}} pixels</strong></p>
+<p><strong>Area fraction (white phase): {{volume_fraction}}% </strong></p>
 <!--display JPG from apache path-->
-<img src= 'http://129.105.90.149/nm/NBbefore.jpg' style="max-height:300px; max-width:300px" />
-<img src= 'http://129.105.90.149/nm/NBafter.jpg' style="max-height:300px; max-width:300px" />
-<p> </p>
+
 
 <form action="" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Run" />
+    <input type="submit" value="Binarize" />
 </form>
+<br></br>
+
+<style>
+div.target {
+	position: relative;
+	left: 40px;
+	top: 40px;
+	width: 500px;
+	height: 500px;
+}
+
+div.binarized {
+	position: absolute;
+        left: 500px;
+	top: -10px;
+	width: 500px;
+	height: 500px;
+}
+</style>
+<script src="/static/resources/lib/jquery/jquery-1.11.1.min.js"></script>
+<div class ="target">
+<h3 style="text-align: center;"> Input Image </h3>
+<script language="JavaScript">
+  function Target()
+  {
+	$('div.target h3').after('<img src="http://129.105.90.149/nm/Binarization/Niblack/NBbefore.jpg" title="Input Microstructure" style="position: relative;" width="400" height="400">')
+  }
+  Target();
+</script>
 
 
+<div class ="binarized">
+<h3 style="text-align: center;"> Binarized Image</h3><a id ="myAnchor" download></a>
+<script>
+  function Binarize()
+  {
+	$('div.binarized h3').after('<img src="http://129.105.90.149/nm/Binarization/Niblack/NBafter.jpg" style="position: relative;" width="400" height="400">')
+	$('div.target').after('<p style="text-align:center;margin-top:60px;padding-left:40px;"><a href="http://129.105.90.149/nm/Binarization/Niblack/NBafter.jpg" id="myAnchor"> Download Result</a></p>')
+  }
+  Binarize();
+</script>
+</div>
 
+</div>
+
+<hr>
+	<h4>Reference</h4>
+	<p>W. Niblack, An Introduction to Image Processing. Englewood Cliffs, NJ: Prentice-Hall, 1986, pp. 115-116.</p>
+	<p>Khurshid, K.,Siddiqi, I., Faure, C. and Vincent, N., 2009. Comparison of Niblack inspired Binarization methods for ancient document. DRR, 7247, pp.1-10</p>
+</hr>
 {% endblock %}

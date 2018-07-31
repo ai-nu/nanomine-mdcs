@@ -3,7 +3,7 @@
 
 
 {% block title %}<h1><span>Dynamfit - Prony Series coefficient fitting</span></h1>{% endblock %}
-{% block menu %}{% include 'nmrr/menus/main.html' with active_tab='tab8' %}{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
 {% block content%}
 
 <b>Please click <a href="http://nanomine.northwestern.edu/nanomine/Dynamfit/EXAMPLE.X_T">here</a> to download example data file.</b>
@@ -15,13 +15,25 @@
 <p>Number of elements to use:                                  20</p>
 <p>Compliance method (1) or modulus method (2):                2</p><br>
 
-<b>The fitting result is shown below</b>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Epsilon Prime &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Epsilon Double Prime</p>
+<b>The fitting result is shown below</b><br><br>
+<!-- <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Epsilon Double Prime</p>
 	<div class="col-lg-8">
-		<img src="http://nanomine.northwestern.edu/nanomine/Dynamfit/E.jpg", style="width:450px">
+        <img src="http://nanomine.northwestern.edu/nanomine/Dynamfit/E.jpg", style="width:450px">
         <img src="http://nanomine.northwestern.edu/nanomine/Dynamfit/EE.jpg", style="width:450px"S>
-	</div>
+	</div> -->
 	
+<table class="col-lg-8" border="0">
+<tr align=center>
+    <td>Epsilon Prime</td>
+    <td>Epsilon Double Prime</td>
+</tr>
+<tr align=center>
+    <td><img src="http://nanomine.northwestern.edu/nanomine/Dynamfit/E.jpg", style="width:450px"></td>
+    <td><img src="http://nanomine.northwestern.edu/nanomine/Dynamfit/EE.jpg", style="width:450px"></td>
+</tr>
+</table>
+
+
 <p>Now please click <input type='button' value='here' onClick="window.open('/DynamfitExampleInput','newwindow')"> to change the parameters of simulation, compare your result with result above and get familiar with the tool.</p>
 
 {% endblock %}

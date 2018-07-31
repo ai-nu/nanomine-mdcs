@@ -27,22 +27,9 @@
 
 {% block title %}<h1>Query Results</h1>{% endblock %}
 
-{% block description %}From here you can view the results of your query.{% endblock %}
+{% block description %}From here you can view the results of your query. You might need to wait for a while for the results to be loaded.{% endblock %}
 
 {% block menu %}{% include 'menu.html' with active_tab='options' %}{% endblock %}
-
-{% block submenu %}	
-<ul id="subnav-tab-1" class="tabbed">
-    <li class="current_page_item">
-    	<a href="/explore">Query by Example</a>
-   	</li>
-    <li>
-        <div style="cursor:pointer">
-            <a href="/explore/keyword">Search by Keyword</a>
-        </div>
-    </li>
-</ul>
-{% endblock %}	
 
 {% block content %}
 <div class="toolbar">

@@ -93,12 +93,14 @@ def notify(request):
 #
 ################################################################################
 def all_options(request):
+    # if request.user.is_authenticated():        
     template = loader.get_template('all-options.html')
     context = RequestContext(request, {
         '': '',
     })
     return HttpResponse(template.render(context))
-
+    # else:
+    #     return redirect('/login')
 
 ################################################################################
 #
@@ -419,22 +421,22 @@ def help(request):
 #
 ################################################################################
 def simulate_tool(request):
-    if request.user.is_authenticated():        
+    #if request.user.is_authenticated():        
         template = loader.get_template('simulate_tool.html')
         context = RequestContext(request, {
         '': '',
         })
         return HttpResponse(template.render(context))
-    else:
-        return redirect('/login')
+    #else:
+        #return redirect('/login')
 
 
 def stats_tool(request):
-    if request.user.is_authenticated():        
+    #if request.user.is_authenticated():        
         template = loader.get_template('stats_tool.html')
         context = RequestContext(request, {
         '': '',
         })
         return HttpResponse(template.render(context))
-    else:
-        return redirect('/login')
+    #else:
+        #return redirect('/login')
