@@ -2,9 +2,19 @@ db.sqlite3
 *.log
 logfile
 logfile.*
+Activity_log.txt
+
+JOB_DATA/
+nanomine.tgz
+
+venv/
+nohup.out
 
 */*.pyc
-conf/
+*pyc
+
+**/,idea/
+.idea/
 
 # mongodb data dir
 data/
@@ -19,7 +29,6 @@ descchar/log/
 descchar/media/
 descchar/mfiles/char_result/
 
-docs
 
 Dynamfit/log/
 Dynamfit/media/
@@ -28,7 +37,6 @@ FEA2D/log/
 # FEA2D/*.num
 FEA2D/*.str
 
-install/
 
 MCFEA/log
 # MCFEA/*.num
@@ -37,7 +45,17 @@ MCFEA/*.str
 niblack/media/
 niblack/mfiles/niblack/imgs/
 
+Two_pt_MCR/media/
+Two_pt_MCR/log/
+
 RECON/*.str
+RECON/media/
+
+Otsu/media/
+Otsu/log/
+
+SDF/media/
+SDF/log/
 
 XMLCONV/*.str
 

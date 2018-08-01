@@ -1,0 +1,21 @@
+mongo
+use admin
+db.createUser(
+{
+user: 'nmadmin',
+pwd: 'nupolymerdbrocks',
+roles: [ { role: "userAdminAnyDatabase", db: "admin"},"backup","restore"]
+}
+)
+exit
+
+mongo --port 27018 -u "nmadmin" -p "nupolymerdbrocks" --authenticationDatabase admin
+use mgi
+db.createUser(
+{
+user: "testuser1",
+pwd: "nanomineuser1pwd",
+roles: ["readWrite"]
+}
+)
+exit
