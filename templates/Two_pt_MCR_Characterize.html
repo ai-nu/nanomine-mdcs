@@ -1,0 +1,66 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR_landing.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>Microstructure Characterization - Correlation Function Approach</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+<h3>Description</h3>
+<br>
+	<p>Upload a binarized image / ZIP file containing set of images (Supported file formats: .jpg, .tif, .png) and click "Characterize". All correlation functions are evaluated for the "white" phase in image.</p>
+	<h4> Input Options:</h4>
+        <p><strong> NOTE: Images must be binarized.</strong></p>
+	<p><strong> 1) Single image: </strong>Supported image formats are .jpg, .tif and .png.(Download <a href='http://129.105.90.149/nm/Two_pt_MCR/Input Samples/Option1.zip'>Sample</a>) The result (downloadable) will contain a plot of the chosen correlation for uploaded image and a CSV file containing correlation as a function of distance (in pixels)   </p>
+	<p><strong> 2) Single image in .mat format :</strong> The .mat file (MATLAB native format) must contain ONLY ONE variable named "Input" - which contains pixel values(only 0 or 1)(Download <a href='http://129.105.90.149/nm/Two_pt_MCR/Input Samples/Option2.zip'>Sample</a>). The result (downloadable) will contain a plot of the chosen correlation for uploaded image and a CSV file containing correlation as a function of distance (in pixels)</p>
+	<p><strong> 3) Multiple images in ZIP File:</strong> Submit a ZIP file containing multiple images (supported formats: .jpg, .tif, .png) of same size (in pixels). DO NOT ZIP the folder containing images; select all images and ZIP them directly.(Download <a href='http://129.105.90.149/nm/Two_pt_MCR/Input Samples/Option3.zip'>Sample</a>). The result will contain the input images renamed in the order they were processed (Input 1.jpg, Input 2.jpg so on),
+		a plot of correlation of all images and the mean. Additionally, a CSV file containing correlation values for each image (arranged colomn wise; in the order they were processed) and their mean (last colomn) is provided. </p>
+
+    <!-- Upload form. Note enctype attribute! -->
+<form action="{% url "Two_pt_MCR_Characterize" %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+    <p> {{form.email_id.label_tag}}
+        {{form.email_id}}
+    </p>
+    <p>	{{form.correlation_choice.label_tag}}
+	{{form.correlation_choice}}
+        <a onClick="window.open('/MCR_Correlation_Fundamentals','newwindow','width=800,height=800')">What is a Correlation Function?</a>
+    </p>
+    <p> {{form.Characterize_input_type.label_tag}}
+        {{form.Characterize_input_type}}
+    </p>
+	<p>{{ form.non_field_errors }}</p>
+	<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+	<p>
+		{{ form.docfile.errors }}
+		{{ form.docfile }}
+	</p>
+	<p><input type="submit" value="Characterize" onclick="Display_loader()"/></p>
+	<img id="loadingImage" src="http://129.105.90.149/nm/busy.gif" style="visibility:hidden"/>
+	<script>
+	function Display_loader(){
+		document.getElementById('loadingImage').style.visibility='visible';
+	}
+	</script>
+
+ </form>
+
+<hr>
+	<h4>Reference</h4>
+	<p>Rintoul, M.D. and Torquato, S., 1997. Reconstruction of the structure of dispersions. Journal of Colloid and Interface Science, 186(2), pp.467-476.</p>
+	<p>Yeong,C. and Torquato,S., 1998. Reconstructing random media Physical Review E, vol. 57, no. 1, p. 495</p>
+
+
+{% endblock %}

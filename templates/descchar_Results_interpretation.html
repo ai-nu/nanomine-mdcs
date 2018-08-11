@@ -1,0 +1,39 @@
+<!-- 
+################################################################################
+#
+# File Name: deschar_Results_Interpretation.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, March 7, 2018
+# Customized for NanoMine
+#
+################################################################################
+-->
+<html>
+<body>
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>How to interpret results?</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+	<p> Depending on the type of input, the results available for download vary: </p>
+
+    <p><strong>1) Single JPEG image</strong> - The result will have the input image (renamed "Input1.jpg") and two CSV files - "Image_data.csv" & "Cluster_data.csv".</p>
+    <p><strong>2) Single image in .mat format</strong> - The result will have the input image (renamed "Input1.jpg") and two CSV files - "Image_data.csv" & "Cluster_data.csv".</p>
+    <p><strong>3) Multiple images in ZIP file</strong> - The results folder will multiple folders - (a) A folder "input" which contains all input images in .jpg format,
+	(b) Folders named "Input1", "Input2" ....; one folder for each input image which contains the image itself and associated "Image_data.csv" & "Cluster_data.csv" files,
+	(c) A CSV file "Batch_data.csv" and (d) Input1.jpg. Note that images are named in the the order they were processed. </p>
+	<h3><p>CSV file definitions</p></h3>
+	<p> <strong> NOTE: The unit of measurement for all descriptors (except volume fraction, number of clusters and aspect ratio which are dimensionless) is pixels. For area, the units are pixel^2. </strong></p>
+	<p> Image_data.csv - This file reports the filler volume (area) fraction, number and mean radius of filler clusters and average values of descriptors - nearest center distance, aspect ratio, area of clusters.</p>
+	<p> Cluster_data.csv - This file reports descriptors (area of cluster, nearest neighbor distance and aspect ratio) associated with each individual filler cluster.</p>
+	<p> Batch_data.csv (available only for ZIP file submissions) - This file reports the overall descriptor statistics observed across all images. The stats reported here are - number of images processed and mean values
+	of volume fraction, number of filler clusters, nearest neighbor distribution, aspect ratio and area of clusters. </p> 
+
+{% endblock %}
+</body>
+</html>

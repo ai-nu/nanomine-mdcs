@@ -1,0 +1,61 @@
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+{% comment %}
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% endcomment %}
+
+
+{% block title %}<h1><span>Two point Microstructure Characterization and Reconstruction</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+	
+
+<h3>Description</h3>
+<br>
+	<p>Upload a grayscale micrograph image in JPEG format and Reconstruct a statistically equivalent image. </p>
+	
+<!--<h3>Existing image files:</h3>-->
+<!-- List of uploaded documents -->
+<!--{% if documents %}
+	<ul>
+	{% for document in documents %}
+		<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No documents.</p>
+{% endif %}-->
+
+<!-- Upload form. Note enctype attribute! -->
+<form action="{% url "Two_pt_MCR" %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<p>{{ form.non_field_errors }}</p>
+	<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+	<p>
+		{{ form.docfile.errors }}
+		{{ form.docfile }}
+	</p>
+	<p><input type="submit" value="Run" /></p>
+</form>
+
+<hr>
+	<h4>Reference</h4>
+	<p>Jiao, Yang, et al., <i><a href="http://www.immijournal.com/content/3/1/3">Three dimensional modeling of complex
+heterogeneous materials via statistical
+microstructural descriptors</a></i>, Integrating Materials and Manufacturing Innovation, 2014</p>
+	
+
+
+{% endblock %}

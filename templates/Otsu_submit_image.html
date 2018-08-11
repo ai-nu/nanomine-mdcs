@@ -1,0 +1,63 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+{% block title %}<h1><span>Binarization - Otsu's Method</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+<h3>Description</h3>
+<br>
+	<p>Upload a image / ZIP file containing set of images (Supported file formats: .jpg, .tif, .png) and click "Binarize" to binarize image using Otsu's Mehtod.</p>
+	<h4> Input Options:</h4>
+        <p><strong> 1) Single image: </strong>Supported image formats are .jpg, .tif and .png.
+        <p><strong> 2) Single image in .mat format :</strong> The .mat file must contain ONLY ONE variable named "Input" - which contains the image.</p>
+        <p><strong> 3) Multiple images in ZIP File:</strong> Submit a ZIP file containing multiple images (supported formats: .jpg, .tif, .png) of same size (in pixels). 
+			DO NOT ZIP the folder containing images; select all images and ZIP them directly.</p>
+
+<!-- Upload form. Note enctype attribute! -->
+<form action="{% url "Otsu_Image_Submission" %}" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<p>
+	<p> {{ form.email_id.label_tag }} </p>
+                {{ form.email_id }}
+        </p>
+        <p>
+	<p></p>
+	<p>
+	<p> 	{{form.input_type.label_tag}}
+        	{{form.input_type}}
+        </p>
+	</p>
+	<p>{{ form.non_field_errors }}</p>
+	<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }} </p>
+	<p>
+		{{ form.docfile.errors }}
+		{{ form.docfile }}		
+	</p>
+	<p><input type="submit" value="Binarize"  onclick = "myFunction()"/></p>
+	<img id='loadingImage' src="http://129.105.90.149/nm/busy.gif" style="visibility:hidden"/> 
+	<script>
+		function myFunction() {
+    			document.getElementById('loadingImage').style.visibility="visible";
+		}
+	</script>
+</form>
+
+<hr>
+	<h4>Reference</h4>
+	<p> N. Otsu, "A threshold selection method from gray-level histograms," IEEE transactions on systems, man, and cybernetics, vol. 9, no. 1, pp. 62-66, 1979.</p>
+</hr>
+
+{% endblock %}

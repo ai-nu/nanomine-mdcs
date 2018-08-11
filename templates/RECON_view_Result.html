@@ -1,0 +1,103 @@
+<!-- 
+################################################################################
+#
+# File Name: RECON_view_result.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, May 7, 2018
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>Microstructure Reconstruction - Physical Descriptors</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+	
+<h3> Results </h3>
+<p>The results will include 3D reconstructed image (Input_3D_recon.mat), a list of coordinates of cluster (white phase) centroids in "Input_3D_recon_center_list.mat", the input image and a random 2D cross-section (Slice.jpg)
+from the 3D reconstructed image. Additionally, a plot (Autocorrelation_comparison.jpg) comparing the autocorrelation of input image with 10 randomly chosen 2D slices from reconstruction is provided to validate the accuracy of reconstruction.  </p>
+
+<br>
+
+<style>
+div.target {
+	position: relative;
+	left: 10px;
+	top: 70px;
+	width: 300px;
+	height: 300px;
+}
+
+div.reconstruct {
+	position: absolute;
+	left: 350px;
+	top: -10px;
+	width: 300px;
+	height: 300px;
+}
+div.correlation {
+	position: absolute;
+        left: 700px;
+	top: -10px;
+	width: 400px;
+	height: 400px;
+}
+
+</style>
+<script src="/static/resources/lib/jquery/jquery-1.11.1.min.js"></script>
+
+<div class ="target">
+<h4 style="text-align: center;"> Input Image </h4><a id ="myAnchor" download></a>
+<script language="JavaScript">
+  function Target()
+  {
+	var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    Job_ID = unescape(temp[1]);
+	$('div.target h4').after('<img src="http://129.105.90.149/nm/Descriptor/Reconstruction/'+Job_ID+'/Input.jpg" title="Input Microstructure" style="position: relative;" width="350" height="350">')
+	$('div.target').after('<p style="text-align:center;margin-top:260px;padding-left:70px;"><a href="http://129.105.90.149/nm/Descriptor/Reconstruction/'+ Job_ID +'/Results.zip" id="myAnchor"> Download Result </a></p>')
+  }
+  Target();
+</script>
+
+<div class ="reconstruct">
+<h4 style="text-align: center;"> Reconstructed 2D Slice </h4>
+<script>
+  function Reconstruct()
+  {
+    var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    Job_ID = unescape(temp[1]);
+	$('div.reconstruct h4').after('<img src="http://129.105.90.149/nm/Descriptor/Reconstruction/'+Job_ID+'/Slice.jpg" style="position: relative;" width="550" height="550">')
+  }
+  Reconstruct();
+</script>
+</div>
+<div class ="correlation">
+<h4 style="text-align: center;"> Autocorrelation Comparison</h4>
+<script>
+  function Spectral()
+  {
+	var parameters = location.search.substring(1).split("&");
+    var temp = parameters[0].split("=");
+    Job_ID = unescape(temp[1]);
+	$('div.correlation h4').after('<img src="http://129.105.90.149/nm/Descriptor/Reconstruction/'+Job_ID+'/Autocorrelation_comparison.jpg" title="Autocorrelation Comparison" style="position: relative;" width="500" height="500">')
+  }
+  Spectral();
+</script>
+</div>
+
+</div>
+
+<hr>
+	<h4>Reference</h4>
+	<p> Xu, H., Li, Y., Brinson, C. and Chen, W., 2014. A descriptor-based design methodology for developing heterogeneous microstructural materials system. Journal of Mechanical Design, 136(5), p.051007.</p>
+	<p> Xu, H., Dikin, D.A., Burkhart, C. and Chen, W., 2014. Descriptor-based methodology for statistical characterization and 3D reconstruction of microstructural materials. Computational Materials Science, 85, pp.206-216.</p>
+</hr>
+
+{% endblock %}

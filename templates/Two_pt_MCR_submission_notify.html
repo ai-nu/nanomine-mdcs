@@ -1,0 +1,39 @@
+<!--################################################################################
+#
+# File Name: Two_pt_MCR.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html'%}
+{% load staticfiles %}
+{% load  auth_extras %}
+
+{% block title %}<h1><span>Microstructure Characterization and Reconstruction - Correlation Function Approach</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+<h3>Image Submitted</h3>
+<br>
+	<p>Your Image has been successfully submitted for reconstruction. You will receive an email with a unique Job ID when the reconstruction is complete.</p>
+    <p> Use the Job ID to view/download the reconstructed image available <i><a href="http://nanomine.northwestern.edu:8000/Two_pt_MCR_CheckResult">here
+    </a><i></p>
+<br>
+    <a href='http://nanomine.northwestern.edu:8000/Two_pt_MCR'>Return to Microstructure Characterization and Reconstruction Homepage</a>
+<br>
+    <a href='http://nanomine.northwestern.edu:8000/'>Return to NanoMine Homepage</a>    
+
+
+<hr>
+	<h4>Reference</h4>
+	<p>Rintoul, M.D. and Torquato, S., 1997. Reconstruction of the structure of dispersions. Journal of Colloid and Interface Science, 186(2), pp.467-476.</p>
+	<p>Yeong,C. and Torquato,S., 1998. Reconstructing random media Physical Review E, vol. 57, no. 1, p. 495</p>
+
+</hr>
+
+
+{%endblock%}    

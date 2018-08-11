@@ -1,0 +1,45 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR_landing.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>Correlation Functions</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+<h3>What are correlation functions?</h3>
+	<p>They are statistical descriptors that quantitatively connect the macroscopic properties of a heterogenous image to its complex microstructure. 
+       Mathematically, they quantify the conditional probability of finding two randomly chosen points in the same phase (autocorrelation).
+    <p>
+<h3>What are the different types of correlation functions available in Nanomine?</h3>
+    <p> Nanomine offers four most commonly used two-point correlation functions: (Refer schematic for graphical explanantion*)</p>
+    <p><strong>1) Two Point Autocorrelation(S<sub>2</sub>(r))</strong> - Probability that two randomly chosen points, seperated by distance 'r', fall in the same phase.
+    </p>
+    <p><strong>2) Two Point Lineal Path Correlation(L(r))</strong> - Probability that a randomly selected line segment of length 'r' falls entirely in the same phase.    </p>
+    <p><strong>3) Two Point Cluster Correlation(C<sub>2</sub>(r))</strong> - Probability that two randomly selected points, seperated by distance 'r', fall in the same cluster.
+    </p>
+    <p><strong>4) Two Point Surface-Surface Correlation(F<sub>S</sub>(r))</strong> - Probability that two randomly selected points, seperated by distance 'r', fall into a dilated
+        region associated with the surface of one phase in the limit of vanishingly small dilation.
+    </p>
+    <br>
+    <img src="http://129.105.90.149/nm/MCR_Correlation_Fundamentals.jpg" width='300px' height='300px'>
+    <p><span class="italic">*Adopted from Jiao et.al. (see references).</span></p>
+    <br>
+<hr>
+	<h4>Reference</h4>
+	<p>Rintoul, M.D. and Torquato, S., 1997. Reconstruction of the structure of dispersions. Journal of Colloid and Interface Science, 186(2), pp.467-476.</p>
+	<p>Yeong,C. and Torquato,S., 1998. Reconstructing random media Physical Review E, vol. 57, no. 1, p. 495</p>
+	<p>Jiao, Y. and Chawla, N., 2014. Three dimensional modeling of complex heterogeneous materials via statistical microstructural descriptors. Integrating Materials and Manufacturing Innovation, 3(1), p.3.</p> 
+</hr>
+{% endblock %}

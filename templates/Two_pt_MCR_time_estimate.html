@@ -1,0 +1,27 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR_landing.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>How long will this take?</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+	<p> Depending on the size of uploaded image, the reconstruction time will vary. The table shown below gives the approximate time required for creating 
+	an accurate reconstruction. Note that reconstruction using cluster correlation function will take approximately 10 times longer than other correlation functions. 
+    <p>
+
+    <img src ="http://129.105.90.149/nm/time_estimate_correlation.JPG" width='500px' height='300px'>
+
+{% endblock %}

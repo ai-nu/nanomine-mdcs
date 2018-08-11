@@ -1,0 +1,37 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR_Check_Result.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>Microstructure Characterization</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+	
+
+<h3>Enter Job ID (sent via email)</h3>
+<br>	
+<div>
+<form action="MCR_Characterize_view_result.html" method="GET">
+   <input type="text" id="foo" name="foo">
+   <input type="submit" value="Send" name="submit" id="submit">
+</form>
+</div>
+
+
+<hr>
+	<h4>Reference</h4>
+	<p>Rintoul, M.D. and Torquato, S., 1997. Reconstruction of the structure of dispersions. Journal of Colloid and Interface Science, 186(2), pp.467-476.</p>
+	<p>Yeong,C. and Torquato,S., 1998. Reconstructing random media Physical Review E, vol. 57, no. 1, p. 495</p>
+
+{% endblock %}

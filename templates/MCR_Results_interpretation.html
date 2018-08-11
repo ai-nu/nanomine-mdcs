@@ -1,0 +1,36 @@
+<!-- 
+################################################################################
+#
+# File Name: Two_pt_MCR_landing.html
+# Application: templates
+# Description: 
+#
+# Modified by: Akshay Iyer, July 7, 2017
+# Customized for NanoMine
+#
+################################################################################
+-->
+{% extends 'base_featured.html' %}
+{% load staticfiles %}
+
+
+{% block title %}<h1><span>How to interpret results?</span></h1>{% endblock %}
+{% block menu %}{% include 'menu.html' with active_tab='stats_tool' %}{% endblock %}
+{% block content%}
+
+	<p> Depending on the type of input, the results available for download vary:
+    <p>
+
+    <p><strong>1) Single image - </strong>Results will have the input images and a folder "Reconstruction" containing reconstructed images (in .jpg format) and a plot of correlation functions for both images for comparison.
+		Plotted data is also provided in CSV files, with the first colomn and second colomn representing input (aka target image) and reconstructed images respectively.</p>
+    <p><strong>2) Single image in .mat format - </strong>Results will have the input images and a folder "Reconstruction" containing reconstructed images (in .jpg format) and a plot of correlation functions for both images for comparison.
+		Plotted data is also provided in CSV files, with the first colomn and second colomn representing input (aka target image) and reconstructed images respectively.</p>
+    <p><strong>3) Multiple images in ZIP file</strong> - Results will contain input images renamed in the order they were processed (Input1, Input 2 ..) and three folders - 
+		one containing the images obtained from ZIP file, one containing the characterization results and another containing reconstruction results.
+		The characterization folder includes a plot of the correlation function (chosen for reconstruction) for all images in the ZIP file. 
+		Plotted data is available in CSV file; the colomns represent images arranged in the order they were processed and the last colomn being the mean of all images.
+		The mean of selected correlation is used for reconstruction. 
+		The reconstruction folder contains reconstructed images (in .jpg) and CSV files of correlation functions (first colomn is the mean of input images followed by reconstructed images).
+    </p>
+
+{% endblock %}
