@@ -58,7 +58,7 @@ SDF/media/
 SDF/log/
 
 XMLCONV/*.str
-
+*.tif
 
 # Windows image file caches
 Thumbs.db
