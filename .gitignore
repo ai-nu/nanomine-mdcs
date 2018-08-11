@@ -57,8 +57,12 @@ Otsu/log/
 SDF/media/
 SDF/log/
 
-XMLCONV/*.str
 *.tif
+doi.pkl
+XMLCONV/*.str
+static/XMLCONV/archive/
+static/XMLCONV/code_src/
+
 
 # Windows image file caches
 Thumbs.db
