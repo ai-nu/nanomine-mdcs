@@ -160,7 +160,7 @@ def home(request):
                     all_files = glob.glob(WorkingDir + '/*.*')
                     img_file = list()
                     for f in all_files:
-                        if f.split('.')[-1] in ['png', 'jpg', 'tif', 'tiff', 'gif']: # added tiff, gif
+                        if f.split('.')[-1].lower() in ['png', 'jpg', 'tif', 'tiff', 'gif']: # added tiff, gif
                             img_file.append(f)
                     if len(img_file) > 0:
                         cmd_mkdir_media = 'mkdir -p ' + mediaDir + PID + '/' + SID + '/'
